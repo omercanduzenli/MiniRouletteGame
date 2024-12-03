@@ -1,0 +1,4 @@
+repository "MiniRouletteGame/MiniRouletteGame@18968029530100@cloud"
+  path "/"
+    br "/main"
+    co "/main"
