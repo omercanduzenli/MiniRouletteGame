@@ -1,0 +1,13 @@
+# Unity Geçici Dosyalar
+Temp/
+Library/
+Logs/
+Obj/
+
+# Unity Asset Store paketleri
+PackageCache/
+
+# Diğer geçici dosyalar
+.vs/
+.idea/
+.vscode/
