@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
+  m_Name: RewardData 1
+  m_EditorClassIdentifier: 
+  rewardName: Candy
+  rewardSprite: {fileID: -3366272070310193754, guid: e744f974fa3cdb7499f078c8b40fe869, type: 3}
+  rewardValue: 5
+  weight: 6
