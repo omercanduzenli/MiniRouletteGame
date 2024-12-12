@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 12
   m_EditorClassIdentifier: 
+  rewardID: 13
   rewardName: Pineapple
   rewardSprite: {fileID: 837517196756356485, guid: 1180bfe8c05fbf740a000ef5d75a6ae8, type: 3}
-  rewardValue: 14
   weight: 3
+  minAmount: 1
+  maxAmount: 3

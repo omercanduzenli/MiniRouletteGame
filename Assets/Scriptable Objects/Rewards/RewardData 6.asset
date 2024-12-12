@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 6
   m_EditorClassIdentifier: 
+  rewardID: 7
   rewardName: Fig
   rewardSprite: {fileID: -1934220362459914066, guid: aa91056952dcc7a47b7a91912e184087, type: 3}
-  rewardValue: 6
   weight: 5
+  minAmount: 1
+  maxAmount: 9

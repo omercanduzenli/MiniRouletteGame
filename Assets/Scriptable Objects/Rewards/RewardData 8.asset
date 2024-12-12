@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 8
   m_EditorClassIdentifier: 
+  rewardID: 9
   rewardName: Hot-Chocolate
   rewardSprite: {fileID: -6709044539391235229, guid: 9107e61d62c91f945bdfd74e0fa7c034, type: 3}
-  rewardValue: 12
   weight: 3
+  minAmount: 1
+  maxAmount: 3

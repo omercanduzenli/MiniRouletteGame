@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 5
   m_EditorClassIdentifier: 
+  rewardID: 6
   rewardName: Egg
   rewardSprite: {fileID: 4646649027328027380, guid: 9be4422173fcc2146a6bad3e1420404f, type: 3}
-  rewardValue: 3
   weight: 8
+  minAmount: 1
+  maxAmount: 9

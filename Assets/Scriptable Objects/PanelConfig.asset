@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
-  m_Name: RewardData
+  m_Script: {fileID: 11500000, guid: c858a4eae7abaf84d830ca00e1008ea3, type: 3}
+  m_Name: PanelConfig
   m_EditorClassIdentifier: 
-  rewardID: 1
-  rewardName: Beer
-  rewardSprite: {fileID: 7795085465242543974, guid: 108c6f1934b6dc34b992c7c460a2f0d9, type: 3}
-  weight: 5
-  minAmount: 1
-  maxAmount: 9
+  topPanelSlots: 4
+  bottomPanelSlots: 4
+  rightPanelSlots: 3
+  leftPanelSlots: 3

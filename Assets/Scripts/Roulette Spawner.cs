@@ -6,14 +6,7 @@ public class RouletteSpawner : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private List<Transform> panels;
-
-    private Dictionary<string, int> panelSlotCounts = new Dictionary<string, int>
-    {
-        { "TopPanel", 4 },
-        { "BottomPanel", 4 },
-        { "RightPanel", 3 },
-        { "LeftPanel", 3 }
-    };
+    [SerializeField] private PanelConfig panelConfig;
 
     private async void Start()
     {
@@ -21,11 +14,18 @@ public class RouletteSpawner : MonoBehaviour
         SlotManager slotManager = FindFirstObjectByType<SlotManager>();
         HighlightManager highlightManager = FindFirstObjectByType<HighlightManager>();
 
+        if (rewardManager == null || slotManager == null || highlightManager == null)
+        {
+            Debug.LogError("Some managers are missing.");
+            return;
+        }
+
         rewardManager.InitializeRewardQueue();
+        var rewardQueue = rewardManager.GetRewardQueue();
 
-        Queue<RewardData> rewardQueue = rewardManager.GetRewardQueue();
+        Dictionary<string, int> panelSlotCounts = panelConfig.GetPanelSlotCounts();
+
         await slotManager.CreateSlots(panels, panelSlotCounts, rewardQueue);
-
         highlightManager.Initialize(slotManager.Slots);
         StartCoroutine(slotManager.ActivateSlotsWithAnimation());
     }

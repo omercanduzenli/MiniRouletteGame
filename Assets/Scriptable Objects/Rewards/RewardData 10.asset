@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 10
   m_EditorClassIdentifier: 
+  rewardID: 11
   rewardName: Mushroom
   rewardSprite: {fileID: 4315506946141470425, guid: e1e20a886b2b2984ca047c4693de7c18, type: 3}
-  rewardValue: 4
   weight: 7
+  minAmount: 1
+  maxAmount: 9

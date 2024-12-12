@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84b41d179e1b6a2478add6a0da6a62c7
+    m_Address: BlueHighlightPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c51f4bce262988498210748ea6c57a4
     m_Address: RewardPrefab
     m_ReadOnly: 0

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 7
   m_EditorClassIdentifier: 
+  rewardID: 8
   rewardName: God-Food
   rewardSprite: {fileID: -1854308281024279928, guid: dcc7151f58a06144d8bb9910a0d01174, type: 3}
-  rewardValue: 20
   weight: 2
+  minAmount: 1
+  maxAmount: 2

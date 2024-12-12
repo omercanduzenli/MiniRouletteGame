@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67911d6e72bb1454c8b0390c76a86e7a, type: 3}
   m_Name: Barbeque Party Scene
   m_EditorClassIdentifier: 
-  sceneAddress: Barbeque Party
+  sceneReference:
+    m_AssetGUID: 9924869c13aac7e43850f3f2a5721e0b
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

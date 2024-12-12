@@ -2,25 +2,34 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
-using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] private SceneData sceneData; 
+    private SceneData sceneToLoad;
+
+    public void SetSceneToLoad(SceneData newSceneData)
+    {
+        sceneToLoad = newSceneData;
+    }
 
     public void LoadScene()
     {
-        if (sceneData != null)
+        if (sceneToLoad != null && sceneToLoad.sceneReference != null)
         {
-            AsyncOperationHandle<SceneInstance> loadHandle = Addressables.LoadSceneAsync(sceneData.sceneAddress, LoadSceneMode.Single, true);
-            loadHandle.Completed += OnSceneLoaded;
+            Addressables.LoadSceneAsync(sceneToLoad.sceneReference, UnityEngine.SceneManagement.LoadSceneMode.Single)
+                .Completed += OnSceneLoaded;
+        }
+        else
+        {
+            Debug.LogError("SceneData or AssetReference is not assigned.");
         }
     }
+
     private void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
     {
         if (obj.Status == AsyncOperationStatus.Succeeded)
         {
-            Debug.Log("Scene Loaded: " + obj.Result.Scene.name);
+            Debug.Log("Scene Loaded Successfully: " + obj.Result.Scene.name);
         }
         else
         {

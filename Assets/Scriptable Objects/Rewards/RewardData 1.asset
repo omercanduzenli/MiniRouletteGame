@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 1
   m_EditorClassIdentifier: 
+  rewardID: 2
   rewardName: Candy
   rewardSprite: {fileID: -3366272070310193754, guid: e744f974fa3cdb7499f078c8b40fe869, type: 3}
-  rewardValue: 5
   weight: 6
+  minAmount: 1
+  maxAmount: 9

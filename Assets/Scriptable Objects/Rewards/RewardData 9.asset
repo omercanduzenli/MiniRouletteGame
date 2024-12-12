@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 9
   m_EditorClassIdentifier: 
+  rewardID: 10
   rewardName: Hot-Dog
   rewardSprite: {fileID: 1373307899632109730, guid: 7df09042247754e47919e71590b14d71, type: 3}
-  rewardValue: 15
   weight: 3
+  minAmount: 1
+  maxAmount: 3

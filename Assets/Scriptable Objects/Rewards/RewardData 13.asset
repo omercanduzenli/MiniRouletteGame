@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
   m_Name: RewardData 13
   m_EditorClassIdentifier: 
+  rewardID: 14
   rewardName: Shrimp
   rewardSprite: {fileID: 868504884959497903, guid: fbe3a935abeb43347939189565d63fb3, type: 3}
-  rewardValue: 30
   weight: 1
+  minAmount: 1
+  maxAmount: 1
