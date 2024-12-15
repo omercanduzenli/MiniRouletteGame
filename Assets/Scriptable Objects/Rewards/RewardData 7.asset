@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9b05f7af8ec024887e5425a889931a, type: 3}
   m_Name: RewardData 7
   m_EditorClassIdentifier: 
   rewardID: 8
-  rewardName: God-Food
   rewardSprite: {fileID: -1854308281024279928, guid: dcc7151f58a06144d8bb9910a0d01174, type: 3}
-  weight: 2
+  weight: 3
   minAmount: 1
-  maxAmount: 2
+  maxAmount: 3

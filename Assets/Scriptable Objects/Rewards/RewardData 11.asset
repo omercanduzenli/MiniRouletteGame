@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9b05f7af8ec024887e5425a889931a, type: 3}
   m_Name: RewardData 11
   m_EditorClassIdentifier: 
   rewardID: 12
-  rewardName: Noodle
   rewardSprite: {fileID: 307049234662581677, guid: b35644b07e5cb6746b0330b472d17854, type: 3}
   weight: 2
   minAmount: 1

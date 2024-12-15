@@ -1,94 +1,146 @@
-using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private GameObject reward;
-    private GameObject highlight;
-    private GameObject blueHighlight;
-    private TextMeshProUGUI amountText;
+    // Child object references
+    private GameObject _rewardObject;
+    private GameObject _highlightObject;
+    private GameObject _blueHighlightObject;
+    private RectTransform _maskContainer;
 
-    private string rewardID;
-    private int rewardAmount;
-    private bool isEliminated = false;
+    private RewardData _rewardData;
+    private TextMeshProUGUI _rewardAmountText;
+    private Sprite _initialBlueHighlightSprite;
 
-    public string GetRewardID() => rewardID; //dışarıya rewardID döner
-    public int GetRewardAmount() => rewardAmount; //dışarıya reward sayısını döner
-    public bool IsEliminated() => isEliminated;  //Seçildi mi seçilmedi mi slot belirten flag.
+    private string _rewardID;
+    private int _rewardAmount;
+    private bool _isEliminated;
 
-    public void Initialize(GameObject rewardPrefab, GameObject highlightPrefab, GameObject maviSlotPrefab) //slotmanagerde yüklenen prefabları alır.
+    // Constants for child object indices
+    private const int HighlightChildIndex = 0;
+    private const int BlueHighlightChildIndex = 1;
+    private const int RewardChildIndex = 2;
+    private const int MaskContainerChildIndex = 3;
+
+    // Public Getters
+    public string GetRewardID() => _rewardID;
+    public int GetRewardAmount() => _rewardAmount;
+    public bool IsEliminated() => _isEliminated;
+    public RewardData GetRewardData() => _rewardData;
+    public GameObject GetRewardObject() => _rewardObject;
+    public RectTransform GetMaskContainerObject() => _maskContainer;
+    public GameObject GetBlueHighlightObject() => _blueHighlightObject;
+    public Sprite GetRewardSprite() => _rewardObject?.GetComponentInChildren<Image>()?.sprite;
+    public Image GetHighlightImage() => _highlightObject?.GetComponentInChildren<Image>();
+
+    // Initializes the slot and assigns child object references
+    public void Initialize()
     {
-        reward = rewardPrefab;
-        highlight = highlightPrefab;
-        blueHighlight = maviSlotPrefab;
-        if (reward)
+        _rewardObject = transform.GetChild(RewardChildIndex).gameObject;
+        _highlightObject = transform.GetChild(HighlightChildIndex).gameObject;
+        _blueHighlightObject = transform.GetChild(BlueHighlightChildIndex).gameObject;
+        _maskContainer = transform.GetChild(MaskContainerChildIndex).GetComponent<RectTransform>();
+
+        if (_blueHighlightObject)
         {
-            amountText = reward.GetComponentInChildren<TextMeshProUGUI>(); //rewarddaki amounttexti alır.
+            var blueHighlightImage = _blueHighlightObject.GetComponentInChildren<Image>();
+            if (blueHighlightImage)
+                _initialBlueHighlightSprite = blueHighlightImage.sprite;
+
+            _blueHighlightObject.SetActive(false);
+        }
+
+        if (_rewardObject)
+        {
+            _rewardAmountText = _rewardObject.GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 
-    public Image GetHighlightImage()
+    // Assigns reward details to the slot
+    public void SetReward(Sprite rewardSprite, string rewardID, int amount, RewardData rewardData)
     {
-        return highlight?.GetComponentInChildren<Image>(); //highlight?. null kontrolüdür if(highlight gibi) ve highlight prefabındaki image i döner.
-    }
+        _rewardID = rewardID;
+        _rewardAmount = amount;
+        _rewardData = rewardData;
 
-    public void SetReward(Sprite rewardSprite, string rewardID, int amount) //kuyruktan çıkarılan rewarddatanın spriteı, reward id si ve sayısı buraya gönderilir
-    {
-        this.rewardID = rewardID;
-        this.rewardAmount = amount;
+        var image = _rewardObject?.GetComponentInChildren<Image>();
+        if (image) image.sprite = rewardSprite;
 
-        var image = reward.GetComponentInChildren<Image>(); //oluşan rewarddaki ımage bileşeni alınır.
-
-        if (image) image.sprite = rewardSprite; //rewarddatadan aöınan sprite reward prefabına atanır.
-
-        if (amountText)
+        if (_rewardAmountText)
         {
-            amountText.text = amount > 1 ? amount.ToString() : ""; //queueden gelen amount miktarı 1 den büyükse texte yazılır değilse yazılmaz
+            _rewardAmountText.text = amount > 1 ? amount.ToString() : "";
         }
     }
 
+    // Marks the slot as eliminated
     public void Eliminate()
     {
-        isEliminated = true;
+        _isEliminated = true;
     }
-    public void ActivateBlueSlot() // bu metot çağrıldığında seçim animasyonu
+
+    // Activates the blue highlight for the slot
+    public void ActivateBlueSlot()
     {
-        if (highlight) //highlight varsa kapat 
+        if (_blueHighlightObject) _blueHighlightObject.SetActive(true);
+
+        var highlightImage = GetHighlightImage();
+        highlightImage?.DOKill();
+        if (highlightImage) highlightImage.color = new Color(1, 1, 1, 0);
+    }
+
+    // Resets the slot to its initial state
+    public void CompletelyResetToInitialState()
+    {
+        _isEliminated = false;
+        ResetHighlight();
+        ResetBlueHighlight();
+        ResetRewardVisuals();
+        ResetMaskSize();
+    }
+
+    // Private Methods
+    // Resets the highlight state
+    private void ResetHighlight()
+    {
+        var highlightImage = GetHighlightImage();
+        highlightImage?.DOKill();
+        if (highlightImage)
+            highlightImage.color = new Color(1, 1, 1, 0);
+    }
+
+    // Resets the blue highlight state
+    private void ResetBlueHighlight()
+    {
+        if (_blueHighlightObject)
         {
-            highlight.SetActive(false); 
+            _blueHighlightObject.SetActive(false);
+            var blueHighlightImage = _blueHighlightObject.GetComponentInChildren<Image>();
+            if (blueHighlightImage)
+                blueHighlightImage.sprite = _initialBlueHighlightSprite;
         }
+    }
 
-        if (blueHighlight) //bluhighlightı aç
+    // Resets the mask container size
+    private void ResetMaskSize()
+    {
+        if (_maskContainer)
         {
-            blueHighlight.SetActive(true);
+            _maskContainer.sizeDelta = new Vector2(0, _maskContainer.sizeDelta.y);
         }
     }
-    public GameObject GetBlueSlotObject()
+
+    // Resets reward visuals
+    private void ResetRewardVisuals()
     {
-        return blueHighlight;
+        if (_rewardObject)
+        {
+            var rewardImageObj = _rewardObject.transform.GetChild(0);
+            if (rewardImageObj) rewardImageObj.gameObject.SetActive(true);
+
+            if (_rewardAmountText) _rewardAmountText.text = "";
+        }
     }
-
-    public GameObject GetRewardObject()
-    {
-        return reward;
-    }
-    public Sprite GetRewardSprite()
-    {
-        var image = reward?.GetComponentInChildren<Image>();
-        return image != null ? image.sprite : null;
-    }
-    public void ResetSlot()
-    {
-        isEliminated = false; //slot yeniden seçilebilir.
-        if (blueHighlight) blueHighlight.SetActive(false);
-        if (amountText) amountText.text = "";
-        Debug.Log($"{name} has been reset.");
-    }
-
-
-
-
 }

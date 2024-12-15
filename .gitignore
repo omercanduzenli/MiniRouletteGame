@@ -1,13 +1,9 @@
-# Unity Geçici Dosyalar
-Temp/
-Library/
-Logs/
-Obj/
-
-# Unity Asset Store paketleri
-PackageCache/
-
-# Diğer geçici dosyalar
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
 .vs/
 .idea/
 .vscode/

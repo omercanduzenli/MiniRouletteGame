@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea690c6626b2504d90bf197df3790df, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9b05f7af8ec024887e5425a889931a, type: 3}
   m_Name: RewardData 8
   m_EditorClassIdentifier: 
   rewardID: 9
-  rewardName: Hot-Chocolate
   rewardSprite: {fileID: -6709044539391235229, guid: 9107e61d62c91f945bdfd74e0fa7c034, type: 3}
   weight: 3
   minAmount: 1
